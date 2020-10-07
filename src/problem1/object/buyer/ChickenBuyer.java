@@ -1,9 +1,9 @@
 package problem1.object.buyer;
 
+import problem1.object.Buyer;
 import problem1.object.animal.AnimalBundle;
 import problem1.object.animal.AnimalBuyer;
 import problem1.object.animal.AnimalPrice;
-import problem1.object.Buyer;
 
 import java.util.ArrayList;
 import java.util.List;

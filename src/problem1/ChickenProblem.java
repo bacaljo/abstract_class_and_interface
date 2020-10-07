@@ -1,7 +1,6 @@
 package problem1;
 
 import problem1.object.animal.AnimalBundle;
-import problem1.object.animal.AnimalBuyer;
 import problem1.object.animal.AnimalMarket;
 import problem1.object.animal.AnimalPrice;
 import problem1.object.animal.market.ChickenMarket;
