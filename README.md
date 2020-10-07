@@ -5,6 +5,16 @@
 
 ## Solutions
 **GitHub Repository:** https://github.com/bacaljo/abstract_class_and_interface.git
+### Chicken Problem
+1. Create an `Animal` and `Chicken` abstract classes that will have age group and gender as attributes.
+2. Create concrete classes for the three chickens by inheriting `Chicken` abstract class (`Cock`, `Hen`, `Chick`). These classes will not expose any parameters in their constructors so that their age groups and genders will not be modifiable outside the class.
+3. Create market-related classes and interfaces that will handle the listing and association of animals with their prices and quantities (`AnimalPrice`, `AnimalMarket`, `Animal Bundle`).
+4. Create a concrete class for the chicken market by inheriting `AnimalMarket` interface. This class will contain the price list of the chickens.
+5. Create an abstract class for our buyer object which will have money as attribute (`Buyer`).
+6. Create an interface that will contain the method to choose all possible animal combination whose total matches the given quantity, base on an animal price list (`AnimalBuyer`). 
+7. Create a concrete class for the chicken buyer by inheriting `Buyer` abstract class. This will implement the `AnimalBuyer` interface so that it can have the ability to choose animal bundles, specifically chickens, by providing its own implementation.
+8. TODO: Update the dummy logic of `ChickenBuyer.chooseAnimalBundleList()` to satisfy the requirements given. 
+
 ### Transportation Problem
 1. Create an abstract class for mode of transportation (`ModeOfTransportation`). It will have a `cost` attribute and a `toString()` abstract method, which will return the display name of the subclass mode. It's `cost` attribute will be private and will only have a getter, so we can only assign its value during instantiation in the constructor.
 2. Create concrete classes for the four transportation modes by inheriting `ModeOfTransportation` abstract class (`DrivingACar`, `TakingABus`, `TakingATrain`, `TakingAPlane`). Since we want all instances of each implementations to have a fixed cost, we will assign the cost during the `super()` call in the subclass constructors and not expose a `cost` parameter.
