@@ -29,11 +29,13 @@ public class ChickenProblem {
         for (int i = 0; i < chickenBundleList.size(); i++) {
             AnimalBundle animalBundle = chickenBundleList.get(i);
 
-            System.out.println("Bundle " + (i + 1) + ":");
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("- Bundle ").append(i + 1).append(": ");
             animalBundle.getAnimalQuantityMap().forEach((animal, quantity) -> {
                 String animalName = animal.getClass().getSimpleName();
-                System.out.println("- " + quantity + " " + animalName + "(s)");
+                stringBuilder.append(quantity).append(" ").append(animalName).append("(s) ");
             });
+            System.out.println(stringBuilder.toString());
         }
     }
 }

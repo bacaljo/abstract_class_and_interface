@@ -2,14 +2,14 @@ package problem1.object.animal;
 
 import problem1.object.Animal;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class AnimalBundle {
     private Map<Animal, Integer> animalQuantityMap;
 
     public AnimalBundle() {
-        animalQuantityMap = new HashMap<>();
+        animalQuantityMap = new LinkedHashMap<>();
     }
 
     public void addAnimalBundle(Animal animal, int quantity) {
