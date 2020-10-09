@@ -15,19 +15,41 @@ public class ChickenBuyer extends Buyer implements AnimalBuyer {
 
     @Override
     public List<AnimalBundle> chooseAnimalBundleList(List<AnimalPrice> animalPriceList, int quantity) {
-        // Dummy logic
         List<AnimalBundle> animalBundleList = new ArrayList<>();
 
-        for (AnimalPrice animalPrice : animalPriceList) {
-            int bundleQuantity = quantity / animalPrice.getQuantity();
+        boolean trialIsNotYetCompleted = true;
+        int[] trialQuantities = new int[animalPriceList.size()];
+        while (trialIsNotYetCompleted) {
+            for (int i = 0; i < trialQuantities.length; i++) {
+                trialQuantities[i]++;
+                if (trialQuantities[i] < quantity) {
+                    break;
+                }
+                trialQuantities[i] = 0;
+            }
 
-            if (animalPrice.getCost() * bundleQuantity <= getMoney()) {
+            double totalCost = 0;
+            int totalQuantity = 0;
+            for (int i = 0; i < animalPriceList.size(); i++) {
+                AnimalPrice animalPrice = animalPriceList.get(i);
+
+                totalCost += animalPrice.getCost() * trialQuantities[i];
+                totalQuantity += animalPrice.getQuantity() * trialQuantities[i];
+            }
+
+            if (totalCost == getMoney() && totalQuantity == quantity) {
                 AnimalBundle animalBundle = new AnimalBundle();
-                animalBundle.addAnimalBundle(animalPrice.getAnimal(), bundleQuantity);
+                for (int i = 0; i < animalPriceList.size(); i++) {
+                    AnimalPrice animalPrice = animalPriceList.get(i);
+                    int animalQuantity = animalPrice.getQuantity() * trialQuantities[i];
 
+                    animalBundle.addAnimalBundle(animalPrice.getAnimal(), animalQuantity);
+                }
                 animalBundleList.add(animalBundle);
+            }
 
-                break;
+            if (totalQuantity >= quantity * trialQuantities.length) {
+                trialIsNotYetCompleted = false;
             }
         }
 
